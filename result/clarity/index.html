@@ -9,12 +9,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    :root { --navy: #2C3E5C; --navy-light: #3D5278; --greige: #C8B8A2; --greige-light: #EDE4D8; --greige-pale: #F7F2EC; --offwhite: #FDFAF6; --text: #2A2420; --text-muted: #7A6E67; --komachi-bubble: #FFF8F0; }
+    :root {
+      --navy: #2C3E5C;
+      --navy-light: #3D5278;
+      --greige: #C8B8A2;
+      --greige-light: #EDE4D8;
+      --greige-pale: #F7F2EC;
+      --offwhite: #FDFAF6;
+      --text: #2A2420;
+      --text-muted: #7A6E67;
+      --komachi-bubble: #FFF8F0;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background-color: var(--offwhite); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-size: 15px; line-height: 1.8; -webkit-font-smoothing: antialiased; }
     .page { max-width: 480px; margin: 0 auto; padding: 0 0 60px; }
 
-    .hero { position: relative; min-height: 260px; background-image: url('../../assets/images/hero-clarity.webp'); background-size: cover; background-position: 62% center; background-repeat: no-repeat; margin-bottom: 0; overflow: hidden; }
+    /* PRを含みます：ヒーローより上・右寄せ・極小 */
+    .pr-above-hero {
+      text-align: right;
+      padding: 6px 16px;
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      opacity: 0.8;
+    }
+
+    /* ヒーロー */
+    .hero { position: relative; min-height: 260px; background-image: url('../../assets/images/hero-clarity.webp'); background-size: cover; background-position: 62% center; background-repeat: no-repeat; margin-bottom: 12px; overflow: hidden; }
     .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(253,250,246,0.95) 0%, rgba(253,250,246,0.88) 30%, rgba(253,250,246,0.70) 50%, rgba(253,250,246,0.45) 70%, rgba(253,250,246,0.15) 100%); z-index: 1; }
     .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(253,250,246,0.35) 0%, transparent 25%, transparent 70%, rgba(253,250,246,0.55) 100%); z-index: 1; }
     .hero-content { position: relative; z-index: 2; padding: 44px 24px 40px; max-width: 68%; }
@@ -22,10 +43,10 @@
     .hero-title { font-family: 'Noto Serif JP', serif; font-size: 23px; font-weight: 700; line-height: 1.55; color: var(--navy); margin-bottom: 14px; letter-spacing: 0.02em; }
     .hero-sub { font-size: 12px; color: var(--text-muted); line-height: 1.9; }
 
-    .pr-top { font-size: 11px; color: var(--text-muted); text-align: center; padding: 8px 20px; background: var(--greige-pale); border-bottom: 1px solid var(--greige-light); letter-spacing: 0.03em; }
+    /* コンテンツ */
+    .content { padding: 0 20px; }
 
-    .content { padding: 20px 20px 0; }
-
+    /* イチさんカード */
     .ichi-card { background: var(--navy); border-radius: 16px; padding: 24px; margin-bottom: 16px; position: relative; overflow: hidden; }
     .ichi-card::before { content: '\201C'; position: absolute; left: 16px; top: 60px; font-size: 48px; color: rgba(255,255,255,0.12); font-family: Georgia, serif; line-height: 1; }
     .ichi-card::after { content: '\201D'; position: absolute; right: 16px; bottom: 16px; font-size: 48px; color: rgba(255,255,255,0.12); font-family: Georgia, serif; line-height: 1; }
@@ -36,6 +57,7 @@
     .card-title { color: rgba(255,255,255,0.55); font-size: 11px; line-height: 1.6; }
     .ichi-body { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 16px 18px; color: rgba(255,255,255,0.92); font-size: 14px; line-height: 1.9; position: relative; z-index: 1; }
 
+    /* アドバイスカード */
     .advice-card { background: var(--greige-pale); border: 1.5px solid var(--greige-light); border-radius: 16px; padding: 22px 24px; margin-bottom: 16px; }
     .advice-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
     .advice-icon-wrap { width: 40px; height: 40px; background: var(--greige-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -45,21 +67,46 @@
     .advice-title { font-family: 'Noto Serif JP', serif; font-size: 14px; font-weight: 600; color: var(--navy); }
     .advice-body { font-size: 14px; color: var(--text); line-height: 1.9; border-left: 3px solid var(--navy); padding-left: 14px; }
 
-    .komachi-card { background: #FFFCF8; border-radius: 16px; padding: 22px 24px; margin-bottom: 32px; position: relative; border: 1px solid #E8DDD0; box-shadow: 0 10px 28px rgba(44, 62, 92, 0.07); }
-    .komachi-card::after { content: ''; position: absolute; bottom: -10px; left: 36px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid #FFFCF8; }
+    /* こまちカード：吹き出しなし・シンプルカード */
+    .komachi-card {
+      background: #FFFCF8;
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 28px;
+      border: 1px solid #E8DDD0;
+      box-shadow: 0 10px 28px rgba(44, 62, 92, 0.07);
+      /* ::after 吹き出しなし */
+    }
     .komachi-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
     .komachi-icon { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: var(--greige-light); }
     .komachi-icon img { width: 100%; height: 100%; object-fit: cover; }
     .komachi-name { font-weight: 700; font-size: 14px; color: var(--text); }
     .komachi-body { font-size: 14px; color: var(--text); line-height: 1.9; }
 
-    .cta-section { margin-top: 8px; margin-bottom: 16px; }
-    .cta-pr-line { font-size: 11px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.6; }
-    .cta-note { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 14px; line-height: 1.7; }
+    /* 締めの言葉：こまちカードとCTAの間 */
+    .closing-note {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 13px;
+      color: var(--navy);
+      text-align: center;
+      line-height: 1.9;
+      margin-bottom: 20px;
+      letter-spacing: 0.03em;
+    }
+
+    /* CTA */
+    .cta-section { margin-bottom: 16px; }
+    .cta-pr-line {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
     /* ※ href="ASP_LINK_CLARITY_MAIN" をASP確定後に差し替え */
     .cta-btn { display: block; width: 100%; background: var(--navy); color: #fff; text-align: center; padding: 18px 24px; border-radius: 12px; font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: 0.03em; transition: background 0.2s, transform 0.1s; font-family: 'Noto Sans JP', sans-serif; }
     .cta-btn:active { transform: scale(0.98); background: var(--navy-light); }
 
+    /* アコーディオン：控えめ設計 */
     .accordion { border: 1px solid var(--greige-light); border-radius: 12px; overflow: hidden; margin-top: 16px; margin-bottom: 32px; }
     .accordion-trigger { width: 100%; background: var(--offwhite); border: none; padding: 14px 20px; display: flex; align-items: center; gap: 10px; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; font-size: 13px; color: var(--text-muted); font-weight: 500; }
     .accordion-trigger svg { width: 16px; height: 16px; stroke: var(--text-muted); fill: none; stroke-width: 1.8; flex-shrink: 0; }
@@ -74,18 +121,22 @@
     .alt-service-link { font-size: 12px; color: var(--navy); text-decoration: none; font-weight: 500; }
     .alt-service-link:hover { text-decoration: underline; }
 
-    .footer { border-top: 1px solid var(--greige-light); padding-top: 24px; margin-top: 8px; padding-left: 20px; padding-right: 20px; }
+    .footer { border-top: 1px solid var(--greige-light); padding-top: 24px; margin-top: 8px; }
     .footer-links { display: flex; gap: 16px; margin-bottom: 12px; }
     .footer-links a { font-size: 11px; color: var(--text-muted); text-decoration: none; }
     .affiliate-note { font-size: 11px; color: var(--text-muted); line-height: 1.7; }
 
     @media (max-width: 375px) { .hero { min-height: 220px; background-position: 68% center; } .hero-content { max-width: 70%; padding: 36px 20px 32px; } .hero-title { font-size: 21px; } .hero-sub { font-size: 11px; } }
     @media (min-width: 376px) and (max-width: 480px) { .hero { min-height: 250px; background-position: 62% center; } .hero-content { max-width: 66%; } .hero-title { font-size: 23px; } }
-    @media (min-width: 481px) { .hero { min-height: 300px; background-position: center right; } .hero-content { max-width: 58%; padding: 56px 32px 48px; } .hero-title { font-size: 28px; } .hero-sub { font-size: 13px; } .hero::before { background: linear-gradient(to right, rgba(253,250,246,0.95) 0%, rgba(253,250,246,0.88) 38%, rgba(253,250,246,0.60) 58%, rgba(253,250,246,0.20) 80%, rgba(253,250,246,0.05) 100%); } }
+    @media (min-width: 481px) { .hero { min-height: 300px; background-position: center right; margin-bottom: 16px; } .hero-content { max-width: 58%; padding: 56px 32px 48px; } .hero-title { font-size: 28px; } .hero-sub { font-size: 13px; } .hero::before { background: linear-gradient(to right, rgba(253,250,246,0.95) 0%, rgba(253,250,246,0.88) 38%, rgba(253,250,246,0.60) 58%, rgba(253,250,246,0.20) 80%, rgba(253,250,246,0.05) 100%); } }
   </style>
 </head>
 <body>
   <div class="page">
+
+    <!-- PRを含みます：ヒーローより上・右寄せ・極小 -->
+    <div class="pr-above-hero">PRを含みます</div>
+
     <section class="hero">
       <div class="hero-content">
         <div class="type-badge">まず整理タイプ</div>
@@ -94,9 +145,8 @@
       </div>
     </section>
 
-    <div class="pr-top">PRを含みます</div>
-
     <div class="content">
+
       <div class="ichi-card">
         <div class="card-header">
           <div class="card-icon"><img src="../../assets/images/icon_ichi.webp" alt="イチさん"></div>
@@ -121,18 +171,22 @@
         <p class="advice-body">エージェントを「転職先を探す場所」ではなく、「自分を整理する場所」として使うのがおすすめです。話すことで、自分でも気づいていなかったことが見えてくることがあります。</p>
       </div>
 
+      <!-- こまちカード：吹き出しなし・シンプル・「一緒に」削除 -->
       <div class="komachi-card">
         <div class="komachi-header">
           <div class="komachi-icon"><img src="../../assets/images/icon_komachi.webp" alt="こまち"></div>
           <div class="komachi-name">こまち</div>
         </div>
-        <p class="komachi-body">モヤモヤしたまま動き出そうとすると、また同じことを繰り返してしまうことも。まずは一緒に整理していきましょう。</p>
+        <p class="komachi-body">モヤモヤしたまま動き出そうとすると、また同じことを繰り返してしまうことも。</p>
       </div>
 
+      <!-- 締めの言葉：Noto Serif・navy・中央寄せ -->
+      <p class="closing-note">転職するかどうかより、<br>まず自分を整理することが大事です。</p>
+
+      <!-- CTA：締め → PR1行 → ボタン の順 -->
       <div class="cta-section">
-        <!-- CTA直前PR1行：ASP確定後にサービス名を入れる -->
+        <!-- ※ ASP確定後にサービス名を入れる -->
         <p class="cta-pr-line">PR：相談サービス名｜外部の転職相談サービス</p>
-        <p class="cta-note">転職するかどうかより、まず自分を整理することが大事です。</p>
         <!-- ※ href="ASP_LINK_CLARITY_MAIN" をASP確定後に差し替え -->
         <a href="ASP_LINK_CLARITY_MAIN" class="cta-btn" id="cta-main" target="_blank" rel="noopener">話しながら整理してみる →</a>
       </div>
@@ -165,6 +219,7 @@
         </div>
         <p class="affiliate-note">当サイトでは一部ページでアフィリエイトプログラムを利用しています。</p>
       </div>
+
     </div>
   </div>
 
@@ -173,7 +228,10 @@
     const q4 = new URLSearchParams(window.location.search).get('q4');
     const ctaBtn = document.getElementById('cta-main');
     if (q4 && ctaTexts[q4]) ctaBtn.textContent = ctaTexts[q4];
-    function toggleAccordion() { document.getElementById('accordion-btn').classList.toggle('open'); document.getElementById('accordion-body').classList.toggle('open'); }
+    function toggleAccordion() {
+      document.getElementById('accordion-btn').classList.toggle('open');
+      document.getElementById('accordion-body').classList.toggle('open');
+    }
   </script>
 </body>
 </html>
