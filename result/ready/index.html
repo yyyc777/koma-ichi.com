@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>転職準備タイプ｜転職前モヤモヤ診断</title>
+  <meta name="description" content="整理できている。あとは動くだけ。何がつらいかも、変えたい方向も見えている。あとは判断材料を増やす段階です。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #2C3E5C;
+      --navy-light: #3D5278;
+      --greige: #C8B8A2;
+      --greige-light: #EDE4D8;
+      --greige-pale: #F7F2EC;
+      --offwhite: #FDFAF6;
+      --text: #2A2420;
+      --text-muted: #7A6E67;
+      --komachi-bubble: #FFF8F0;
+      --user-bubble: #EEF2F8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: var(--offwhite);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page { max-width: 480px; margin: 0 auto; padding: 0 20px 60px; }
+
+    .hero { padding: 40px 0 32px; position: relative; }
+    .hero-inner { position: relative; }
+    .type-badge {
+      display: inline-block;
+      background: var(--greige-light);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+    .hero-text { position: relative; z-index: 2; max-width: 58%; }
+    .hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--navy);
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+    .hero-sub { font-size: 13px; color: var(--text-muted); line-height: 1.9; }
+    .hero-image {
+      position: absolute;
+      right: -20px;
+      top: -8px;
+      width: 52%;
+      max-width: 200px;
+    }
+    .hero-image img { width: 100%; height: auto; display: block; }
+
+    .ichi-card {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ichi-card::before {
+      content: '\201C';
+      position: absolute;
+      left: 16px; top: 60px;
+      font-size: 48px;
+      color: rgba(255,255,255,0.15);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .ichi-card::after {
+      content: '\201D';
+      position: absolute;
+      right: 16px; bottom: 16px;
+      font-size: 48px;
+      color: rgba(255,255,255,0.15);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .card-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.3);
+      flex-shrink: 0;
+      background: var(--navy-light);
+    }
+    .card-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .card-name { color: #fff; font-weight: 700; font-size: 15px; margin-bottom: 2px; }
+    .card-title { color: rgba(255,255,255,0.6); font-size: 11px; line-height: 1.5; }
+    .ichi-body {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 16px 18px;
+      color: rgba(255,255,255,0.92);
+      font-size: 14px;
+      line-height: 1.9;
+      position: relative;
+      z-index: 1;
+    }
+
+    .advice-card {
+      background: var(--greige-pale);
+      border: 1.5px solid var(--greige-light);
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+    .advice-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .advice-icon-wrap {
+      width: 40px; height: 40px;
+      background: var(--greige-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .advice-icon-wrap svg { width: 20px; height: 20px; stroke: var(--text-muted); fill: none; stroke-width: 1.8; }
+    .advice-label { font-size: 12px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.05em; }
+    .advice-title { font-family: 'Noto Serif JP', serif; font-size: 14px; font-weight: 600; color: var(--navy); }
+    .advice-body { font-size: 14px; color: var(--text); line-height: 1.9; border-left: 3px solid var(--navy); padding-left: 14px; }
+
+    .komachi-card {
+      background: var(--komachi-bubble);
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .komachi-card::after {
+      content: '';
+      position: absolute;
+      bottom: -10px; left: 36px;
+      width: 0; height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid var(--komachi-bubble);
+    }
+    .komachi-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .komachi-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--greige-light);
+    }
+    .komachi-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .komachi-name { font-weight: 700; font-size: 14px; color: var(--text); }
+    .komachi-body { font-size: 14px; color: var(--text); line-height: 1.9; }
+
+    .cta-section { margin-top: 40px; margin-bottom: 16px; }
+    .cta-note { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 14px; line-height: 1.7; }
+    .cta-btn {
+      display: block; width: 100%;
+      background: var(--navy); color: #fff;
+      text-align: center;
+      padding: 18px 24px;
+      border-radius: 12px;
+      font-size: 15px; font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.1s;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    .cta-btn:active { transform: scale(0.98); background: var(--navy-light); }
+
+    .accordion { border: 1.5px solid var(--greige-light); border-radius: 12px; overflow: hidden; margin-bottom: 32px; }
+    .accordion-trigger {
+      width: 100%; background: var(--offwhite); border: none;
+      padding: 16px 20px;
+      display: flex; align-items: center; gap: 10px;
+      cursor: pointer;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px; color: var(--text-muted); font-weight: 500;
+    }
+    .accordion-trigger svg { width: 18px; height: 18px; stroke: var(--text-muted); fill: none; stroke-width: 1.8; flex-shrink: 0; }
+    .accordion-chevron { margin-left: auto; width: 18px; height: 18px; stroke: var(--text-muted); fill: none; stroke-width: 2; transition: transform 0.3s; flex-shrink: 0; }
+    .accordion-trigger.open .accordion-chevron { transform: rotate(180deg); }
+    .accordion-body { display: none; padding: 0 20px 20px; background: var(--offwhite); }
+    .accordion-body.open { display: block; }
+    .alt-service { border: 1px solid var(--greige-light); border-radius: 10px; padding: 16px; margin-top: 12px; background: #fff; }
+    .alt-service-name { font-weight: 700; font-size: 14px; color: var(--navy); margin-bottom: 6px; }
+    .alt-service-desc { font-size: 12px; color: var(--text-muted); line-height: 1.7; margin-bottom: 12px; }
+    .alt-service-btn {
+      display: block; width: 100%;
+      background: var(--greige-pale);
+      border: 1.5px solid var(--greige-light);
+      color: var(--navy);
+      text-align: center; padding: 11px;
+      border-radius: 8px; font-size: 13px; font-weight: 700;
+      text-decoration: none;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    .affiliate-note {
+      font-size: 11px; color: var(--text-muted); line-height: 1.7;
+      padding: 16px;
+      background: var(--greige-pale);
+      border-radius: 8px;
+      border: 1px solid var(--greige-light);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="type-badge">転職準備タイプ</div>
+        <div class="hero-text">
+          <h1 class="hero-title">整理できている。<br>あとは動くだけ。</h1>
+          <p class="hero-sub">何がつらいかも、<br>変えたい方向も見えている。<br>あとは判断材料を<br>増やす段階です。</p>
+        </div>
+        <div class="hero-image">
+          <img src="../../assets/images/keyvisual.webp" alt="こまちとイチさん" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </section>
+
+    <div class="ichi-card">
+      <div class="card-header">
+        <div class="card-icon">
+          <img src="../../assets/images/icon_ichi.webp" alt="イチさん">
+        </div>
+        <div>
+          <div class="card-name">イチさん</div>
+          <div class="card-title">人材業界10年・取締役として<br>13,724人と面談</div>
+        </div>
+      </div>
+      <div class="ichi-body">
+        このタイプの方は、動き出すタイミングを迷って機会を逃すケースが多いです。市場価値を一度プロに見てもらうと、自分の思い込みが外れることがよくあります。整理できている今が、一番動き出しやすい状態です。
+      </div>
+    </div>
+
+    <div class="advice-card">
+      <div class="advice-header">
+        <div class="advice-icon-wrap">
+          <svg viewBox="0 0 24 24"><rect x="4" y="3" width="14" height="17" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="11" y2="17"/></svg>
+        </div>
+        <div>
+          <div class="advice-label">こんな相談の仕方が合っています</div>
+          <div class="advice-title">整理した状態で臨む</div>
+        </div>
+      </div>
+      <p class="advice-body">希望条件を整理した状態でエージェントに臨むと、初回面談が非常に有意義になります。転職サービスは「転職を決める場所」ではなく、「自分の市場価値を知る場所」として使ってください。</p>
+    </div>
+
+    <div class="komachi-card">
+      <div class="komachi-header">
+        <div class="komachi-icon">
+          <img src="../../assets/images/icon_komachi.webp" alt="こまち">
+        </div>
+        <div class="komachi-name">こまち</div>
+      </div>
+      <p class="komachi-body">整理できているあなたなら、動き出すタイミングは今だと思います。まず話を聞いてみるだけでも、全然違う景色が見えてきますよ。</p>
+    </div>
+
+    <div class="cta-section">
+      <p class="cta-note">整理できている今が、一番動き出しやすいタイミングです。</p>
+      <a href="#" class="cta-btn" id="cta-main">市場価値を確認してみる →</a>
+    </div>
+
+    <div class="accordion">
+      <button class="accordion-trigger" id="accordion-btn" onclick="toggleAccordion()">
+        <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        他の選択肢も見る
+        <svg class="accordion-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body" id="accordion-body">
+        <div class="alt-service">
+          <div class="alt-service-name">リクルートエージェント</div>
+          <p class="alt-service-desc">求人数業界最大級。選択肢の広さを確認したい方に。非公開求人も多く、市場全体を把握するのに向いています。</p>
+          <a href="#" class="alt-service-btn">詳しく見る →</a>
+        </div>
+        <div class="alt-service">
+          <div class="alt-service-name">マイナビAGENT</div>
+          <p class="alt-service-desc">担当者のサポートが丁寧と評判。希望条件を一緒に整理しながら進めたい方に合っています。</p>
+          <a href="#" class="alt-service-btn">詳しく見る →</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="affiliate-note">本ページはアフィリエイトプログラムを利用しています。紹介しているサービスへの登録により、運営者に報酬が発生する場合があります。</p>
+
+  </div>
+
+  <script>
+    const ctaTexts = {
+      A: '背中を押してもらう →',
+      B: 'まず話だけ聞いてみる →',
+      C: '具体的なアドバイスをもらう →',
+      D: '判断材料を増やしてみる →',
+    };
+    const params = new URLSearchParams(window.location.search);
+    const q4 = params.get('q4');
+    const ctaBtn = document.getElementById('cta-main');
+    if (q4 && ctaTexts[q4]) ctaBtn.textContent = ctaTexts[q4];
+
+    function toggleAccordion() {
+      document.getElementById('accordion-btn').classList.toggle('open');
+      document.getElementById('accordion-body').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
