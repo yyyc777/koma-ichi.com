@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>まず整理タイプ｜転職前モヤモヤ診断</title>
+  <meta name="description" content="動きたい。でも、何から？行動したい気持ちはある。ただ、自分の気持ちや条件がまだ整理しきれていない状態です。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --navy: #2C3E5C; --navy-light: #3D5278; --greige: #C8B8A2; --greige-light: #EDE4D8; --greige-pale: #F7F2EC; --offwhite: #FDFAF6; --text: #2A2420; --text-muted: #7A6E67; --komachi-bubble: #FFF8F0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: var(--offwhite); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-size: 15px; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+    .page { max-width: 480px; margin: 0 auto; padding: 0 0 60px; }
+
+    .hero { position: relative; min-height: 260px; background-image: url('../../assets/images/hero-clarity.webp'); background-size: cover; background-position: 62% center; background-repeat: no-repeat; margin-bottom: 0; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(253,250,246,0.95) 0%, rgba(253,250,246,0.88) 30%, rgba(253,250,246,0.70) 50%, rgba(253,250,246,0.45) 70%, rgba(253,250,246,0.15) 100%); z-index: 1; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(253,250,246,0.35) 0%, transparent 25%, transparent 70%, rgba(253,250,246,0.55) 100%); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; padding: 44px 24px 40px; max-width: 68%; }
+    .type-badge { display: inline-block; background: var(--greige-light); color: var(--text-muted); font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 0.05em; }
+    .hero-title { font-family: 'Noto Serif JP', serif; font-size: 23px; font-weight: 700; line-height: 1.55; color: var(--navy); margin-bottom: 14px; letter-spacing: 0.02em; }
+    .hero-sub { font-size: 12px; color: var(--text-muted); line-height: 1.9; }
+
+    .pr-top { font-size: 11px; color: var(--text-muted); text-align: center; padding: 8px 20px; background: var(--greige-pale); border-bottom: 1px solid var(--greige-light); letter-spacing: 0.03em; }
+
+    .content { padding: 20px 20px 0; }
+
+    .ichi-card { background: var(--navy); border-radius: 16px; padding: 24px; margin-bottom: 16px; position: relative; overflow: hidden; }
+    .ichi-card::before { content: '\201C'; position: absolute; left: 16px; top: 60px; font-size: 48px; color: rgba(255,255,255,0.12); font-family: Georgia, serif; line-height: 1; }
+    .ichi-card::after { content: '\201D'; position: absolute; right: 16px; bottom: 16px; font-size: 48px; color: rgba(255,255,255,0.12); font-family: Georgia, serif; line-height: 1; }
+    .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .card-icon { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255,255,255,0.3); flex-shrink: 0; background: var(--navy-light); }
+    .card-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .card-name { color: #fff; font-weight: 700; font-size: 15px; margin-bottom: 3px; }
+    .card-title { color: rgba(255,255,255,0.55); font-size: 11px; line-height: 1.6; }
+    .ichi-body { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 16px 18px; color: rgba(255,255,255,0.92); font-size: 14px; line-height: 1.9; position: relative; z-index: 1; }
+
+    .advice-card { background: var(--greige-pale); border: 1.5px solid var(--greige-light); border-radius: 16px; padding: 22px 24px; margin-bottom: 16px; }
+    .advice-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .advice-icon-wrap { width: 40px; height: 40px; background: var(--greige-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .advice-icon-wrap svg { width: 20px; height: 20px; stroke: var(--text-muted); fill: none; stroke-width: 1.8; }
+    .advice-meta { min-width: 0; }
+    .advice-label { font-size: 11px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.05em; margin-bottom: 2px; }
+    .advice-title { font-family: 'Noto Serif JP', serif; font-size: 14px; font-weight: 600; color: var(--navy); }
+    .advice-body { font-size: 14px; color: var(--text); line-height: 1.9; border-left: 3px solid var(--navy); padding-left: 14px; }
+
+    .komachi-card { background: #FFFCF8; border-radius: 16px; padding: 22px 24px; margin-bottom: 32px; position: relative; border: 1px solid #E8DDD0; box-shadow: 0 10px 28px rgba(44, 62, 92, 0.07); }
+    .komachi-card::after { content: ''; position: absolute; bottom: -10px; left: 36px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid #FFFCF8; }
+    .komachi-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .komachi-icon { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: var(--greige-light); }
+    .komachi-icon img { width: 100%; height: 100%; object-fit: cover; }
+    .komachi-name { font-weight: 700; font-size: 14px; color: var(--text); }
+    .komachi-body { font-size: 14px; color: var(--text); line-height: 1.9; }
+
+    .cta-section { margin-top: 8px; margin-bottom: 16px; }
+    .cta-pr-line { font-size: 11px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.6; }
+    .cta-note { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 14px; line-height: 1.7; }
+    /* ※ href="ASP_LINK_CLARITY_MAIN" をASP確定後に差し替え */
+    .cta-btn { display: block; width: 100%; background: var(--navy); color: #fff; text-align: center; padding: 18px 24px; border-radius: 12px; font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: 0.03em; transition: background 0.2s, transform 0.1s; font-family: 'Noto Sans JP', sans-serif; }
+    .cta-btn:active { transform: scale(0.98); background: var(--navy-light); }
+
+    .accordion { border: 1px solid var(--greige-light); border-radius: 12px; overflow: hidden; margin-top: 16px; margin-bottom: 32px; }
+    .accordion-trigger { width: 100%; background: var(--offwhite); border: none; padding: 14px 20px; display: flex; align-items: center; gap: 10px; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; font-size: 13px; color: var(--text-muted); font-weight: 500; }
+    .accordion-trigger svg { width: 16px; height: 16px; stroke: var(--text-muted); fill: none; stroke-width: 1.8; flex-shrink: 0; }
+    .accordion-chevron { margin-left: auto; width: 16px; height: 16px; stroke: var(--text-muted); fill: none; stroke-width: 2; transition: transform 0.3s; flex-shrink: 0; }
+    .accordion-trigger.open .accordion-chevron { transform: rotate(180deg); }
+    .accordion-body { display: none; padding: 0 16px 16px; background: var(--offwhite); }
+    .accordion-body.open { display: block; }
+    .alt-service { padding: 14px 0; border-bottom: 1px solid var(--greige-light); }
+    .alt-service:last-child { border-bottom: none; }
+    .alt-service-name { font-weight: 700; font-size: 13px; color: var(--navy); margin-bottom: 3px; }
+    .alt-service-desc { font-size: 12px; color: var(--text-muted); line-height: 1.7; margin-bottom: 8px; }
+    .alt-service-link { font-size: 12px; color: var(--navy); text-decoration: none; font-weight: 500; }
+    .alt-service-link:hover { text-decoration: underline; }
+
+    .footer { border-top: 1px solid var(--greige-light); padding-top: 24px; margin-top: 8px; padding-left: 20px; padding-right: 20px; }
+    .footer-links { display: flex; gap: 16px; margin-bottom: 12px; }
+    .footer-links a { font-size: 11px; color: var(--text-muted); text-decoration: none; }
+    .affiliate-note { font-size: 11px; color: var(--text-muted); line-height: 1.7; }
+
+    @media (max-width: 375px) { .hero { min-height: 220px; background-position: 68% center; } .hero-content { max-width: 70%; padding: 36px 20px 32px; } .hero-title { font-size: 21px; } .hero-sub { font-size: 11px; } }
+    @media (min-width: 376px) and (max-width: 480px) { .hero { min-height: 250px; background-position: 62% center; } .hero-content { max-width: 66%; } .hero-title { font-size: 23px; } }
+    @media (min-width: 481px) { .hero { min-height: 300px; background-position: center right; } .hero-content { max-width: 58%; padding: 56px 32px 48px; } .hero-title { font-size: 28px; } .hero-sub { font-size: 13px; } .hero::before { background: linear-gradient(to right, rgba(253,250,246,0.95) 0%, rgba(253,250,246,0.88) 38%, rgba(253,250,246,0.60) 58%, rgba(253,250,246,0.20) 80%, rgba(253,250,246,0.05) 100%); } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="type-badge">まず整理タイプ</div>
+        <h1 class="hero-title">動きたい。<br>でも、何から？</h1>
+        <p class="hero-sub">行動したい気持ちはある。<br>ただ、自分の気持ちや条件が<br>まだ整理しきれていない状態です。</p>
+      </div>
+    </section>
+
+    <div class="pr-top">PRを含みます</div>
+
+    <div class="content">
+      <div class="ichi-card">
+        <div class="card-header">
+          <div class="card-icon"><img src="../../assets/images/icon_ichi.webp" alt="イチさん"></div>
+          <div>
+            <div class="card-name">イチさん</div>
+            <div class="card-title">人材業界で長く取締役を務めてきた立場から</div>
+          </div>
+        </div>
+        <div class="ichi-body">このタイプの方が一番多いです。焦って動き出すと、転職先でも同じ悩みを繰り返すことがあります。今の段階では「自分が何を大事にしているか」を言語化することが先決です。</div>
+      </div>
+
+      <div class="advice-card">
+        <div class="advice-header">
+          <div class="advice-icon-wrap">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="advice-meta">
+            <div class="advice-label">こんな相談の仕方が合っています</div>
+            <div class="advice-title">整理する場所として使う</div>
+          </div>
+        </div>
+        <p class="advice-body">エージェントを「転職先を探す場所」ではなく、「自分を整理する場所」として使うのがおすすめです。話すことで、自分でも気づいていなかったことが見えてくることがあります。</p>
+      </div>
+
+      <div class="komachi-card">
+        <div class="komachi-header">
+          <div class="komachi-icon"><img src="../../assets/images/icon_komachi.webp" alt="こまち"></div>
+          <div class="komachi-name">こまち</div>
+        </div>
+        <p class="komachi-body">モヤモヤしたまま動き出そうとすると、また同じことを繰り返してしまうことも。まずは一緒に整理していきましょう。</p>
+      </div>
+
+      <div class="cta-section">
+        <!-- CTA直前PR1行：ASP確定後にサービス名を入れる -->
+        <p class="cta-pr-line">PR：相談サービス名｜外部の転職相談サービス</p>
+        <p class="cta-note">転職するかどうかより、まず自分を整理することが大事です。</p>
+        <!-- ※ href="ASP_LINK_CLARITY_MAIN" をASP確定後に差し替え -->
+        <a href="ASP_LINK_CLARITY_MAIN" class="cta-btn" id="cta-main" target="_blank" rel="noopener">話しながら整理してみる →</a>
+      </div>
+
+      <div class="accordion">
+        <button class="accordion-trigger" id="accordion-btn" onclick="toggleAccordion()">
+          <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          他の選択肢も見る
+          <svg class="accordion-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-body" id="accordion-body">
+          <!-- ※ ASP_LINK_CLARITY_SUB1 / SUB2 をASP確定後に差し替え -->
+          <div class="alt-service">
+            <div class="alt-service-name">自己理解特化型キャリア相談</div>
+            <p class="alt-service-desc">まず自分の軸を整理したい人向け。転職よりも自己理解を深めたい方に合っています。</p>
+            <a href="ASP_LINK_CLARITY_SUB1" class="alt-service-link" target="_blank" rel="noopener">詳しく見る →</a>
+          </div>
+          <div class="alt-service">
+            <div class="alt-service-name">サポート重視型エージェント</div>
+            <p class="alt-service-desc">キャリアの方向性を一緒に整理したい方に合っています。</p>
+            <a href="ASP_LINK_CLARITY_SUB2" class="alt-service-link" target="_blank" rel="noopener">詳しく見る →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="footer-links">
+          <a href="../../privacy/">プライバシーポリシー</a>
+          <a href="../../privacy/#operator">運営者情報</a>
+        </div>
+        <p class="affiliate-note">当サイトでは一部ページでアフィリエイトプログラムを利用しています。</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ctaTexts = { A: '背中を押してもらう →', B: 'まず話だけ聞いてみる →', C: '具体的なアドバイスをもらう →', D: '今のモヤモヤを整理してみる →' };
+    const q4 = new URLSearchParams(window.location.search).get('q4');
+    const ctaBtn = document.getElementById('cta-main');
+    if (q4 && ctaTexts[q4]) ctaBtn.textContent = ctaTexts[q4];
+    function toggleAccordion() { document.getElementById('accordion-btn').classList.toggle('open'); document.getElementById('accordion-body').classList.toggle('open'); }
+  </script>
+</body>
+</html>
