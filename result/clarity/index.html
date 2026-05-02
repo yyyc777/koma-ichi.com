@@ -76,6 +76,13 @@
     .footer-links a { font-size: 11px; color: var(--text-muted); text-decoration: none; }
     .affiliate-note { font-size: 11px; color: var(--text-muted); line-height: 1.7; }
 
+    /* ==== ASP審査通過後に削除 ====*/
+    .pr-in-hero,
+    .cta-section,
+    .accordion,
+    .affiliate-note { display: none !important; }
+    /* ============================ */
+
     @media (max-width: 375px) { .hero { min-height: 220px; background-position: 68% center; } .hero-content { max-width: 70%; padding: 36px 20px 32px; } .hero-title { font-size: 21px; } .hero-sub { font-size: 11px; } }
     @media (min-width: 376px) and (max-width: 480px) { .hero { min-height: 250px; background-position: 62% center; } .hero-content { max-width: 66%; } .hero-title { font-size: 23px; } }
     @media (min-width: 481px) { .hero { min-height: 300px; background-position: center right; margin-bottom: 16px; } .hero-content { max-width: 58%; padding: 56px 32px 48px; } .hero-title { font-size: 28px; } .hero-sub { font-size: 13px; } .hero::before { background: linear-gradient(to right, rgba(253,250,246,0.95) 0%, rgba(253,250,246,0.88) 38%, rgba(253,250,246,0.60) 58%, rgba(253,250,246,0.20) 80%, rgba(253,250,246,0.05) 100%); } }
