@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>転職準備タイプ｜転職前モヤモヤ診断</title>
-  <meta name="description" content="整理できている。あとは動くだけ。何がつらいかも、変えたい方向も見えている。あとは判断材料を増やす段階です。">
+  <title>いったん見直しタイプ｜転職前モヤモヤ診断</title>
+  <meta name="description" content="まだ、答えを急がなくていい。自分でもまだよくわからない段階。焦って動くより、まず今の状態を見直すところからで大丈夫です。">
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCZ566Z3H9"></script>
   <script>
@@ -22,13 +22,12 @@
     body { background-color: var(--offwhite); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-size: 15px; line-height: 1.8; -webkit-font-smoothing: antialiased; }
     .page { max-width: 480px; margin: 0 auto; padding: 0 0 60px; }
 
-    .hero { position: relative; min-height: 260px; background-image: url('../../assets/images/hero-ready.webp'); background-size: cover; background-position: 65% center; background-repeat: no-repeat; margin-bottom: 12px; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(253,250,246,0.95) 0%, rgba(253,250,246,0.88) 30%, rgba(253,250,246,0.70) 50%, rgba(253,250,246,0.45) 70%, rgba(253,250,246,0.15) 100%); z-index: 1; }
-    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(253,250,246,0.35) 0%, transparent 25%, transparent 70%, rgba(253,250,246,0.55) 100%); z-index: 1; }
-    .pr-in-hero { position: absolute; right: 0; bottom: 0; font-size: 10px; color: rgba(42,36,32,0.6); z-index: 2; letter-spacing: 0.03em; background: rgba(253,250,246,0.75); padding: 2px 6px; border-radius: 4px 0 0 0; }
+    .hero { position: relative; min-height: 260px; background-image: url('../../assets/images/hero-reflect.webp'); background-size: cover; background-position: 65% center; background-repeat: no-repeat; margin-bottom: 12px; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(253,250,246,0.97) 0%, rgba(253,250,246,0.90) 30%, rgba(253,250,246,0.72) 50%, rgba(253,250,246,0.48) 70%, rgba(253,250,246,0.18) 100%); z-index: 1; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(253,250,246,0.40) 0%, transparent 25%, transparent 70%, rgba(253,250,246,0.60) 100%); z-index: 1; }
     .hero-content { position: relative; z-index: 2; padding: 44px 24px 40px; max-width: 68%; }
     .type-badge { display: inline-block; background: var(--greige-light); color: var(--text-muted); font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 0.05em; }
-    .hero-title { font-family: 'Noto Serif JP', serif; font-size: 23px; font-weight: 700; line-height: 1.55; color: var(--navy); margin-bottom: 14px; letter-spacing: 0.02em; }
+    .hero-title { font-family: 'Noto Serif JP', serif; font-size: 20px; font-weight: 700; line-height: 1.6; color: var(--navy); margin-bottom: 14px; letter-spacing: 0.02em; }
     .hero-sub { font-size: 12px; color: var(--text-muted); line-height: 1.9; }
 
     .content { padding: 0 20px; }
@@ -41,54 +40,36 @@
     .card-name { color: #fff; font-weight: 700; font-size: 15px; margin-bottom: 3px; }
     .card-title { color: rgba(255,255,255,0.55); font-size: 11px; line-height: 1.6; }
     .ichi-body { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 16px 18px; color: rgba(255,255,255,0.92); font-size: 14px; line-height: 1.9; position: relative; z-index: 1; }
-    .advice-card { background: var(--greige-pale); border: 1.5px solid var(--greige-light); border-radius: 16px; padding: 22px 24px; margin-bottom: 16px; }
-    .advice-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-    .advice-icon-wrap { width: 40px; height: 40px; background: var(--greige-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .advice-icon-wrap svg { width: 20px; height: 20px; stroke: var(--text-muted); fill: none; stroke-width: 1.8; }
-    .advice-meta { min-width: 0; }
-    .advice-label { font-size: 11px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.05em; margin-bottom: 2px; }
-    .advice-title { font-family: 'Noto Serif JP', serif; font-size: 14px; font-weight: 600; color: var(--navy); }
-    .advice-body { font-size: 14px; color: var(--text); line-height: 1.9; border-left: 3px solid var(--navy); padding-left: 14px; }
-    .komachi-card { background: #FFFCF8; border-radius: 16px; padding: 22px 24px; margin-bottom: 28px; border: 1px solid #E8DDD0; box-shadow: 0 10px 28px rgba(44,62,92,0.07); }
+
+    .komachi-card { background: #FFFCF8; border-radius: 16px; padding: 22px 24px; margin-bottom: 40px; border: 1px solid #E8DDD0; box-shadow: 0 10px 28px rgba(44,62,92,0.07); }
     .komachi-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
     .komachi-icon { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: var(--greige-light); }
     .komachi-icon img { width: 100%; height: 100%; object-fit: cover; }
     .komachi-name { font-weight: 700; font-size: 14px; color: var(--text); }
     .komachi-body { font-size: 14px; color: var(--text); line-height: 1.9; }
-    .cta-section { margin-bottom: 16px; }
-    .cta-pr-line { font-size: 11px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.6; }
+
+    .cta-section { margin-bottom: 40px; }
+    .cta-note { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 14px; line-height: 1.7; }
     .cta-btn { display: block; width: 100%; background: var(--navy); color: #fff; text-align: center; padding: 18px 24px; border-radius: 12px; font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: 0.03em; transition: background 0.2s, transform 0.1s; font-family: 'Noto Sans JP', sans-serif; }
     .cta-btn:active { transform: scale(0.98); background: var(--navy-light); }
-    .accordion { border: 1px solid var(--greige-light); border-radius: 12px; overflow: hidden; margin-top: 16px; margin-bottom: 32px; }
-    .accordion-trigger { width: 100%; background: var(--offwhite); border: none; padding: 14px 20px; display: flex; align-items: center; gap: 10px; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; font-size: 13px; color: var(--text-muted); font-weight: 500; }
-    .accordion-trigger svg { width: 16px; height: 16px; stroke: var(--text-muted); fill: none; stroke-width: 1.8; flex-shrink: 0; }
-    .accordion-chevron { margin-left: auto; width: 16px; height: 16px; stroke: var(--text-muted); fill: none; stroke-width: 2; transition: transform 0.3s; flex-shrink: 0; }
-    .accordion-trigger.open .accordion-chevron { transform: rotate(180deg); }
-    .accordion-body { display: none; padding: 0 16px 16px; background: var(--offwhite); }
-    .accordion-body.open { display: block; }
-    .alt-service { padding: 14px 0; border-bottom: 1px solid var(--greige-light); }
-    .alt-service:last-child { border-bottom: none; }
-    .alt-service-name { font-weight: 700; font-size: 13px; color: var(--navy); margin-bottom: 3px; }
-    .alt-service-desc { font-size: 12px; color: var(--text-muted); line-height: 1.7; margin-bottom: 8px; }
-    .alt-service-link { font-size: 12px; color: var(--navy); text-decoration: none; font-weight: 500; }
+
     .footer { border-top: 1px solid var(--greige-light); padding-top: 24px; margin-top: 8px; }
     .footer-links { display: flex; gap: 16px; margin-bottom: 12px; }
     .footer-links a { font-size: 11px; color: var(--text-muted); text-decoration: none; }
     .affiliate-note { font-size: 11px; color: var(--text-muted); line-height: 1.7; }
 
-    @media (max-width: 375px) { .hero { min-height: 220px; background-position: 72% center; } .hero-content { max-width: 70%; padding: 36px 20px 32px; } .hero-title { font-size: 21px; } .hero-sub { font-size: 11px; } }
-    @media (min-width: 376px) and (max-width: 480px) { .hero { min-height: 250px; background-position: 65% center; } .hero-content { max-width: 66%; } .hero-title { font-size: 23px; } }
-    @media (min-width: 481px) { .hero { min-height: 300px; background-position: center right; margin-bottom: 16px; } .hero-content { max-width: 58%; padding: 56px 32px 48px; } .hero-title { font-size: 28px; } .hero-sub { font-size: 13px; } .hero::before { background: linear-gradient(to right, rgba(253,250,246,0.95) 0%, rgba(253,250,246,0.88) 38%, rgba(253,250,246,0.60) 58%, rgba(253,250,246,0.20) 80%, rgba(253,250,246,0.05) 100%); } }
+    @media (max-width: 375px) { .hero { min-height: 220px; background-position: 70% center; } .hero-content { max-width: 70%; padding: 36px 20px 32px; } .hero-title { font-size: 19px; } .hero-sub { font-size: 11px; } }
+    @media (min-width: 376px) and (max-width: 480px) { .hero { min-height: 250px; background-position: 65% center; } .hero-content { max-width: 66%; } .hero-title { font-size: 20px; } }
+    @media (min-width: 481px) { .hero { min-height: 300px; background-position: center right; margin-bottom: 16px; } .hero-content { max-width: 58%; padding: 56px 32px 48px; } .hero-title { font-size: 26px; } .hero-sub { font-size: 13px; } .hero::before { background: linear-gradient(to right, rgba(253,250,246,0.97) 0%, rgba(253,250,246,0.90) 38%, rgba(253,250,246,0.65) 58%, rgba(253,250,246,0.22) 80%, rgba(253,250,246,0.05) 100%); } }
   </style>
 </head>
 <body>
   <div class="page">
     <section class="hero">
-      <span class="pr-in-hero">PRを含みます</span>
       <div class="hero-content">
-        <div class="type-badge">転職準備タイプ</div>
-        <h1 class="hero-title">整理できている。<br>あとは動くだけ。</h1>
-        <p class="hero-sub">何がつらいかも、変えたい方向も見えている。あとは判断材料を増やす段階です。</p>
+        <div class="type-badge">いったん見直しタイプ</div>
+        <h1 class="hero-title">まだ、<br>答えを急がなくていい。</h1>
+        <p class="hero-sub">自分でもまだよくわからない段階。<br>焦って動くより、まず今の状態を<br>見直すところからで大丈夫です。</p>
       </div>
     </section>
 
@@ -101,20 +82,7 @@
             <div class="card-title">人材業界で長く取締役を務めてきた立場から</div>
           </div>
         </div>
-        <div class="ichi-body">このタイプの方は、動き出すタイミングを迷って機会を逃すケースが多いです。今の選択肢を外から確認すると、自分の思い込みが外れることがよくあります。整理できている今が、一番動き出しやすい状態です。</div>
-      </div>
-
-      <div class="advice-card">
-        <div class="advice-header">
-          <div class="advice-icon-wrap">
-            <svg viewBox="0 0 24 24"><rect x="4" y="3" width="14" height="17" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="11" y2="17"/></svg>
-          </div>
-          <div class="advice-meta">
-            <div class="advice-label">こんな相談の仕方が合っています</div>
-            <div class="advice-title">整理した状態で臨む</div>
-          </div>
-        </div>
-        <p class="advice-body">希望条件を整理した状態で相談に臨むと、初回面談が非常に有意義になります。転職サービスは「転職を決める場所」ではなく、「自分の選択肢を知る場所」として使ってください。</p>
+        <div class="ichi-body">今すぐ答えを出す必要はまったくありません。「なんとなく嫌だな」という感覚は、大事なシグナルです。まずはその感覚を大切にしながら、少しずつ整理していきましょう。</div>
       </div>
 
       <div class="komachi-card">
@@ -122,33 +90,12 @@
           <div class="komachi-icon"><img src="../../assets/images/icon_komachi.webp" alt="こまち"></div>
           <div class="komachi-name">こまち</div>
         </div>
-        <p class="komachi-body">整理できているなら、あとは外から確認するだけ。<br><br>話を聞いてみると、自分が思っていたより選択肢が広かったり、逆に「やっぱり今じゃない」とわかることもあって。どちらにしても、動いて損はないと思います。</p>
+        <p class="komachi-body">答えが出ない時期って、あっていいと思います。<br><br>これからも漫画を更新していくので、気が向いたら続きを読んでみてください。少しでも整理のきっかけになると嬉しいです。</p>
       </div>
 
       <div class="cta-section">
-        <p class="cta-pr-line">PR：相談サービス名｜外部の転職相談サービス</p>
-        <!-- ※ href="ASP_LINK_READY_MAIN" をASP確定後に差し替え -->
-        <a href="ASP_LINK_READY_MAIN" class="cta-btn" id="cta-main" target="_blank" rel="noopener">市場価値を確認してみる →</a>
-      </div>
-
-      <div class="accordion">
-        <button class="accordion-trigger" id="accordion-btn" onclick="toggleAccordion()">
-          <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-          他の選択肢も見る
-          <svg class="accordion-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="accordion-body" id="accordion-body">
-          <div class="alt-service">
-            <div class="alt-service-name">大手総合型エージェント</div>
-            <p class="alt-service-desc">幅広い求人を見たい人向け。情報収集に向いています。</p>
-            <a href="ASP_LINK_READY_SUB1" class="alt-service-link" target="_blank" rel="noopener">詳しく見る →</a>
-          </div>
-          <div class="alt-service">
-            <div class="alt-service-name">サポート重視型エージェント</div>
-            <p class="alt-service-desc">希望条件を一緒に整理しながら進めたい方に合っています。</p>
-            <a href="ASP_LINK_READY_SUB2" class="alt-service-link" target="_blank" rel="noopener">詳しく見る →</a>
-          </div>
-        </div>
+        <!-- ※ Instagram URLは確定済み -->
+        <a href="https://www.instagram.com/tenshoku_mae_manga/" class="cta-btn" id="cta-main" target="_blank" rel="noopener">漫画の続きを読む →</a>
       </div>
 
       <div class="footer">
@@ -162,11 +109,10 @@
   </div>
 
   <script>
-    const ctaTexts = { A: '背中を押してもらう →', B: 'まず話だけ聞いてみる →', C: '具体的なアドバイスをもらう →', D: '判断材料を増やしてみる →' };
+    const ctaTexts = { A: '少しずつ整理してみる →', B: 'こまちと一緒に整理する →', C: 'まず考え方を知る →', D: '焦らず、続きを読んでみる →' };
     const q4 = new URLSearchParams(window.location.search).get('q4');
     const ctaBtn = document.getElementById('cta-main');
     if (q4 && ctaTexts[q4]) ctaBtn.textContent = ctaTexts[q4];
-    function toggleAccordion() { document.getElementById('accordion-btn').classList.toggle('open'); document.getElementById('accordion-body').classList.toggle('open'); }
   </script>
 </body>
 </html>
