@@ -110,11 +110,11 @@
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           </div>
           <div class="advice-meta">
-            <div class="advice-label">こんな相談の仕方が合っています</div>
-            <div class="advice-title">整理する場所として使う</div>
+            <div class="advice-label">転職相談を使うなら</div>
+            <div class="advice-title" id="advice-title">整理する場所として使う</div>
           </div>
         </div>
-        <p class="advice-body">エージェントを「転職先を探す場所」ではなく、「自分を整理する場所」として使うのがおすすめです。話すことで、自分でも気づいていなかったことが見えてくることがあります。</p>
+        <p class="advice-body" id="advice-body">転職相談は、転職先を決める場所としてだけでなく、自分の考えを整理する場所としても使えます。話すことで、気づいていなかったことが見えてくることがあります。</p>
       </div>
 
       <div class="komachi-card">
@@ -162,10 +162,36 @@
   </div>
 
   <script>
+    // q4：CTAテキスト出し分け
     const ctaTexts = { A: '背中を押してもらう →', B: 'まず話だけ聞いてみる →', C: '具体的なアドバイスをもらう →', D: '今のモヤモヤを整理してみる →' };
     const q4 = new URLSearchParams(window.location.search).get('q4');
     const ctaBtn = document.getElementById('cta-main');
     if (q4 && ctaTexts[q4]) ctaBtn.textContent = ctaTexts[q4];
+
+    // q3：アドバイスカード動的切り替え
+    const adviceData = {
+      A: {
+        title: '話しながら不安を整理する',
+        body: '収入への不安は、話してみることで輪郭がはっきりしてくることがあります。整理しきれていなくても、相談から始められます。'
+      },
+      B: {
+        title: '整理する場所として使う',
+        body: '転職相談は、転職先を決める場所としてだけでなく、自分の考えを整理する場所としても使えます。話すことで、気づいていなかったことが見えてくることがあります。'
+      },
+      C: {
+        title: '話しながら軸を作る',
+        body: '伝え方は、話しながら整理していけます。まず自分がどうしたいかを一緒に考えることから始められます。'
+      },
+      D: {
+        title: '話しながら軸を整理する',
+        body: 'スキルが足りるか不安でも、話しながら整理できます。何を大事にしたいかが見えてくると、必要な準備も自然に決まってきます。'
+      }
+    };
+    const q3 = new URLSearchParams(window.location.search).get('q3') || 'B';
+    const advice = adviceData[q3] || adviceData['B'];
+    document.getElementById('advice-title').textContent = advice.title;
+    document.getElementById('advice-body').textContent = advice.body;
+
     function toggleAccordion() { document.getElementById('accordion-btn').classList.toggle('open'); document.getElementById('accordion-body').classList.toggle('open'); }
   </script>
 </body>
