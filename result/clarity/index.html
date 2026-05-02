@@ -9,54 +9,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --navy: #2C3E5C;
-      --navy-light: #3D5278;
-      --greige-light: #EDE4D8;
-      --greige-pale: #F7F2EC;
-      --offwhite: #FDFAF6;
-      --text: #2A2420;
-      --text-muted: #7A6E67;
-    }
+    :root { --navy: #2C3E5C; --navy-light: #3D5278; --greige: #C8B8A2; --greige-light: #EDE4D8; --greige-pale: #F7F2EC; --offwhite: #FDFAF6; --text: #2A2420; --text-muted: #7A6E67; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background-color: var(--offwhite); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-size: 15px; line-height: 1.8; -webkit-font-smoothing: antialiased; }
     .page { max-width: 480px; margin: 0 auto; padding: 0 0 60px; }
 
-    /* パターンA：ヒーロー内右下 */
-    .hero {
-      position: relative;
-      min-height: 260px;
-      background-image: url('../../assets/images/hero-clarity.webp');
-      background-size: cover;
-      background-position: 62% center;
-      background-repeat: no-repeat;
-      margin-bottom: 12px;
-      overflow: hidden;
-    }
+    .hero { position: relative; min-height: 260px; background-image: url('../../assets/images/hero-clarity.webp'); background-size: cover; background-position: 62% center; background-repeat: no-repeat; margin-bottom: 12px; overflow: hidden; }
     .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(253,250,246,0.95) 0%, rgba(253,250,246,0.88) 30%, rgba(253,250,246,0.70) 50%, rgba(253,250,246,0.45) 70%, rgba(253,250,246,0.15) 100%); z-index: 1; }
     .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(253,250,246,0.35) 0%, transparent 25%, transparent 70%, rgba(253,250,246,0.55) 100%); z-index: 1; }
+    .pr-in-hero { position: absolute; right: 0; bottom: 0; font-size: 10px; color: rgba(42,36,32,0.6); z-index: 2; letter-spacing: 0.03em; background: rgba(253,250,246,0.75); padding: 2px 6px; border-radius: 4px 0 0 0; }
     .hero-content { position: relative; z-index: 2; padding: 44px 24px 40px; max-width: 68%; }
-
-    /* PR表記：ヒーロー内右下角・ぴったり */
-    .pr-in-hero {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      font-size: 10px;
-      color: rgba(42, 36, 32, 0.6);
-      z-index: 2;
-      letter-spacing: 0.03em;
-      background: rgba(253, 250, 246, 0.75);
-      padding: 2px 6px;
-      border-radius: 4px 0 0 0;
-    }
-
     .type-badge { display: inline-block; background: var(--greige-light); color: var(--text-muted); font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 0.05em; }
     .hero-title { font-family: 'Noto Serif JP', serif; font-size: 23px; font-weight: 700; line-height: 1.55; color: var(--navy); margin-bottom: 14px; letter-spacing: 0.02em; }
     .hero-sub { font-size: 12px; color: var(--text-muted); line-height: 1.9; }
 
     .content { padding: 0 20px; }
-
     .ichi-card { background: var(--navy); border-radius: 16px; padding: 24px; margin-bottom: 16px; position: relative; overflow: hidden; }
     .ichi-card::before { content: '\201C'; position: absolute; left: 16px; top: 60px; font-size: 48px; color: rgba(255,255,255,0.12); font-family: Georgia, serif; line-height: 1; }
     .ichi-card::after { content: '\201D'; position: absolute; right: 16px; bottom: 16px; font-size: 48px; color: rgba(255,255,255,0.12); font-family: Georgia, serif; line-height: 1; }
@@ -66,7 +33,6 @@
     .card-name { color: #fff; font-weight: 700; font-size: 15px; margin-bottom: 3px; }
     .card-title { color: rgba(255,255,255,0.55); font-size: 11px; line-height: 1.6; }
     .ichi-body { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 16px 18px; color: rgba(255,255,255,0.92); font-size: 14px; line-height: 1.9; position: relative; z-index: 1; }
-
     .advice-card { background: var(--greige-pale); border: 1.5px solid var(--greige-light); border-radius: 16px; padding: 22px 24px; margin-bottom: 16px; }
     .advice-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
     .advice-icon-wrap { width: 40px; height: 40px; background: var(--greige-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -75,21 +41,16 @@
     .advice-label { font-size: 11px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.05em; margin-bottom: 2px; }
     .advice-title { font-family: 'Noto Serif JP', serif; font-size: 14px; font-weight: 600; color: var(--navy); }
     .advice-body { font-size: 14px; color: var(--text); line-height: 1.9; border-left: 3px solid var(--navy); padding-left: 14px; }
-
     .komachi-card { background: #FFFCF8; border-radius: 16px; padding: 22px 24px; margin-bottom: 28px; border: 1px solid #E8DDD0; box-shadow: 0 10px 28px rgba(44,62,92,0.07); }
     .komachi-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
     .komachi-icon { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: var(--greige-light); }
     .komachi-icon img { width: 100%; height: 100%; object-fit: cover; }
     .komachi-name { font-weight: 700; font-size: 14px; color: var(--text); }
     .komachi-body { font-size: 14px; color: var(--text); line-height: 1.9; }
-
-
-
     .cta-section { margin-bottom: 16px; }
     .cta-pr-line { font-size: 11px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.6; }
     .cta-btn { display: block; width: 100%; background: var(--navy); color: #fff; text-align: center; padding: 18px 24px; border-radius: 12px; font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: 0.03em; transition: background 0.2s, transform 0.1s; font-family: 'Noto Sans JP', sans-serif; }
     .cta-btn:active { transform: scale(0.98); background: var(--navy-light); }
-
     .accordion { border: 1px solid var(--greige-light); border-radius: 12px; overflow: hidden; margin-top: 16px; margin-bottom: 32px; }
     .accordion-trigger { width: 100%; background: var(--offwhite); border: none; padding: 14px 20px; display: flex; align-items: center; gap: 10px; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; font-size: 13px; color: var(--text-muted); font-weight: 500; }
     .accordion-trigger svg { width: 16px; height: 16px; stroke: var(--text-muted); fill: none; stroke-width: 1.8; flex-shrink: 0; }
@@ -102,7 +63,6 @@
     .alt-service-name { font-weight: 700; font-size: 13px; color: var(--navy); margin-bottom: 3px; }
     .alt-service-desc { font-size: 12px; color: var(--text-muted); line-height: 1.7; margin-bottom: 8px; }
     .alt-service-link { font-size: 12px; color: var(--navy); text-decoration: none; font-weight: 500; }
-
     .footer { border-top: 1px solid var(--greige-light); padding-top: 24px; margin-top: 8px; }
     .footer-links { display: flex; gap: 16px; margin-bottom: 12px; }
     .footer-links a { font-size: 11px; color: var(--text-muted); text-decoration: none; }
@@ -154,11 +114,12 @@
           <div class="komachi-icon"><img src="../../assets/images/icon_komachi.webp" alt="こまち"></div>
           <div class="komachi-name">こまち</div>
         </div>
-        <p class="komachi-body">モヤモヤしたまま動き出そうとすると、また同じことを繰り返してしまうことも。<br><br>整理するために話してみる、って方法もあって。合う合わないはあるけど、転職を決めるためじゃなく、まず自分を整理するために使ってみてもいいかもですね。</p>
+        <p class="komachi-body">モヤモヤしたまま動き出そうとすると、また同じことを繰り返してしまうことも。<br><br>整理するために話してみる、って方法もあって。合う合わないはあるけど、転職を決めるためじゃなく、自分を整理するためにまず気軽に相談してみてもいいかもですね。</p>
       </div>
 
       <div class="cta-section">
         <p class="cta-pr-line">PR：相談サービス名｜外部の転職相談サービス</p>
+        <!-- ※ href="ASP_LINK_CLARITY_MAIN" をASP確定後に差し替え -->
         <a href="ASP_LINK_CLARITY_MAIN" class="cta-btn" id="cta-main" target="_blank" rel="noopener">話しながら整理してみる →</a>
       </div>
 
@@ -197,10 +158,7 @@
     const q4 = new URLSearchParams(window.location.search).get('q4');
     const ctaBtn = document.getElementById('cta-main');
     if (q4 && ctaTexts[q4]) ctaBtn.textContent = ctaTexts[q4];
-    function toggleAccordion() {
-      document.getElementById('accordion-btn').classList.toggle('open');
-      document.getElementById('accordion-body').classList.toggle('open');
-    }
+    function toggleAccordion() { document.getElementById('accordion-btn').classList.toggle('open'); document.getElementById('accordion-body').classList.toggle('open'); }
   </script>
 </body>
 </html>
