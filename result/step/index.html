@@ -125,11 +125,11 @@
             <svg viewBox="0 0 24 24"><rect x="4" y="3" width="14" height="17" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="11" y2="17"/></svg>
           </div>
           <div class="advice-meta">
-            <div class="advice-label">こんな相談の仕方が合っています</div>
-            <div class="advice-title">情報収集として使う</div>
+            <div class="advice-label">転職相談を使うなら</div>
+            <div class="advice-title" id="advice-title">情報収集として使う</div>
           </div>
         </div>
-        <p class="advice-body">話を聞いたからといって、すぐ転職を決める必要はありません。「今の会社に残るか」を判断するための情報収集として使う方も多いです。動き出した事実が、意外と気持ちを楽にしてくれます。</p>
+        <p class="advice-body" id="advice-body">相談したからといって、すぐ転職を決める必要はありません。残るか動くかを考えるための材料として使う方も多いです。動き出した事実が、意外と気持ちを楽にしてくれます。</p>
       </div>
 
       <div class="komachi-card">
@@ -177,10 +177,36 @@
   </div>
 
   <script>
+    // q4：CTAテキスト出し分け
     const ctaTexts = { A: '背中を押してもらう →', B: 'まず話だけ聞いてみる →', C: '具体的なアドバイスをもらう →', D: '判断材料だけ集めてみる →' };
     const q4 = new URLSearchParams(window.location.search).get('q4');
     const ctaBtn = document.getElementById('cta-main');
     if (q4 && ctaTexts[q4]) ctaBtn.textContent = ctaTexts[q4];
+
+    // q3：アドバイスカード動的切り替え
+    const adviceData = {
+      A: {
+        title: '不安を数字で見る',
+        body: '収入の不安は、情報が少ないほど大きく見えます。まず市場の相場を知るだけでも、迷いの輪郭が見えてきます。話を聞くだけなら、今日からできます。'
+      },
+      B: {
+        title: '情報収集として使う',
+        body: '相談したからといって、すぐ転職を決める必要はありません。残るか動くかを考えるための材料として使う方も多いです。動き出した事実が、意外と気持ちを楽にしてくれます。'
+      },
+      C: {
+        title: '話しながら選択肢を知る',
+        body: '職場への言い出し方は、選択肢が見えてから考える方が自然です。相談しながら整理できるので、まず話してみるところから始められます。'
+      },
+      D: {
+        title: '外での見え方を知る',
+        body: '自分のスキルは、自分だけでは判断しにくいものです。外からどう見られるかを聞いてみると、次の一歩が見えやすくなります。'
+      }
+    };
+    const q3 = new URLSearchParams(window.location.search).get('q3') || 'B';
+    const advice = adviceData[q3] || adviceData['B'];
+    document.getElementById('advice-title').textContent = advice.title;
+    document.getElementById('advice-body').textContent = advice.body;
+
     function toggleAccordion() { document.getElementById('accordion-btn').classList.toggle('open'); document.getElementById('accordion-body').classList.toggle('open'); }
   </script>
 </body>
